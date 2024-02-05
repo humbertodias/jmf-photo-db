@@ -21,3 +21,13 @@ sequenceDiagram
 mvn package
 java -jar target/photo-db-1.0-jar-with-dependencies.jar <cod_inst> <rgm_alun>
 ```
+
+## Db Configuration
+At [src/main/resources/connection.properties](src/main/resources/connection.properties)
+```
+table.photo=aluno_foto
+jdbc.driver=org.h2.Driver
+jdbc.user=sa
+jdbc.pass=
+jdbc.url=jdbc:h2:file:~/java-photo-db
+```
