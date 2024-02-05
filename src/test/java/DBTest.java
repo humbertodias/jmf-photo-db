@@ -1,25 +1,24 @@
-
-import java.awt.AWTException;
-import java.awt.Rectangle;
-import java.awt.Robot;
-import java.awt.Toolkit;
-import java.awt.image.BufferedImage;
-import java.sql.Connection;
+import org.junit.Test;
 import photodb.ConnectionFactory;
 import photodb.Picture;
 import photodb.PictureDAO;
-import org.junit.Assert;
-import org.junit.Test;
+
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.sql.Connection;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class DBTest {
 
     @Test
-    public void testConnection() throws ClassNotFoundException {
-        Assert.assertNotNull(ConnectionFactory.getConnection());
+    public void testConnection() {
+        assertNotNull(ConnectionFactory.getConnection());
     }
 
     @Test
-    public void testDbPopulate() throws AWTException, ClassNotFoundException, Exception {
+    public void testDbPopulate() throws Exception {
         Connection c = ConnectionFactory.getConnection();
         BufferedImage image = new Robot().createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
         Picture p = new Picture(image, 0, "rgm", "jpg");
@@ -29,7 +28,7 @@ public class DBTest {
 
         dao.insert();
 
-        Assert.assertEquals(oldCount + 1, dao.count());
+        assertEquals(oldCount + 1, dao.count());
 
     }
 

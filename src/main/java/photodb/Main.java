@@ -58,7 +58,6 @@ import javax.swing.JToolBar;
 import javax.swing.UIManager;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
-import javax.swing.filechooser.FileFilter;
 
 /**
  * @author Humberto Lino - 01/12/08 New Features - now is possible to save in
@@ -71,7 +70,7 @@ import javax.swing.filechooser.FileFilter;
  */
 public class Main extends JFrame {
 
-    private final static Color BACKGROUND = Color.BLACK;
+    private static final Color BACKGROUND = Color.BLACK;
     private static int shotCounter = 0;
     //
     private JToolBar toolbar = new JToolBar();
@@ -92,7 +91,6 @@ public class Main extends JFrame {
     private int cod_inst;
     private String rgm_alun;
     private String extension = "jpg";//sempre jpg
-//    private String dir = "S:\\fotos";
     private String dir = System.getProperty("java.io.tmpdir");
     //private String defaultFrameSize = "185x200";
     private String defaultFrameSize = "200x200";
@@ -101,6 +99,7 @@ public class Main extends JFrame {
 
     /**
      * Constructor
+     *
      * @param frameTitle
      * @param cod_inst
      * @param rgm_alun
@@ -153,7 +152,7 @@ public class Main extends JFrame {
      *
      * @returns true if web cam is detected
      */
-    public boolean initialise() throws Exception {
+    public boolean initialise() {
         MyCaptureDeviceInfo[] cams = autoDetect();
         //
         if (cams.length > 0) {
@@ -182,11 +181,10 @@ public class Main extends JFrame {
     /**
      * Initialise
      *
-     * @throws java.lang.Exception
      * @param _deviceInfo, specific web cam device if not autodetected
      * @return true if web cam is detected
      */
-    public boolean initialise(CaptureDeviceInfo _deviceInfo) throws Exception {
+    public boolean initialise(CaptureDeviceInfo _deviceInfo) {
         setStatusBar("Initialising...");
         webCamDeviceInfo = _deviceInfo;
 
@@ -803,61 +801,6 @@ public class Main extends JFrame {
 
     }// of MySnapshot
 
-    class FileChooserFilter extends FileFilter {
-
-        private String description;
-        private ArrayList<String> exts = new ArrayList<String>();
-
-        public FileChooserFilter(String description, String ext) {
-            setDescription(description);
-            addType(ext);
-        }
-
-        public void addType(String ext) {
-            exts.add(ext);
-        }
-
-        /**
-         * Return true if the given file is accepted by this filter.
-         */
-        @Override
-        public boolean accept(File f) {
-            // Little trick: if you don't do this, only directory names
-            // ending in one of the extentions appear in the window.
-            if (f.isDirectory()) {
-                return true;
-            } else if (f.isFile()) {
-                Iterator<String> it = exts.iterator();
-                while (it.hasNext()) {
-                    if (f.getName().endsWith(it.next())) {
-                        return true;
-                    }
-                }//end while
-            }//end else if
-            // A file that didn't match, or a weird (e.g. UNIX device file?).
-            return false;
-        }
-
-        /**
-         * Set the printable description of this filter.
-         */
-        public void setDescription(String s) {
-            description = s;
-        }
-
-        /**
-         * Return the printable description of this filter.
-         */
-        @Override
-        public String getDescription() {
-            return description;
-        }
-
-        public String getExtension() {
-            return exts.isEmpty() ? "" : exts.get(0);
-        }
-    }// of FileChooserFilter	
-
     public static void showException(Component parent, String title, Exception ex) {
         final Writer sw = new StringWriter();
         final PrintWriter pw = new PrintWriter(sw);
@@ -891,7 +834,7 @@ public class Main extends JFrame {
     public static void main(String[] args) {
         try {
             if (args.length < 2) {
-                throw new IllegalArgumentException("Usage:\njava -jar jfoto.jar <cod_inst> <rgm_alun>");
+                throw new IllegalArgumentException("Usage:\njava -jar photo-db.jar <cod_inst> <rgm_alun>");
             } else {
                 String cod_inst = args[0];
                 String rgm_alun = args[1];

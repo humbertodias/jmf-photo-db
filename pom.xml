@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>java</groupId>
+    <groupId>jmf</groupId>
     <artifactId>photo-db</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
@@ -16,16 +16,15 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.192</version>
+            <version>2.2.220</version>
         </dependency>
         
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>6.0.3</version>
+            <version>8.0.28</version>
         </dependency>
-        
         
         <!-- https://mvnrepository.com/artifact/javax.media/jmf -->
         <dependency>
@@ -33,7 +32,6 @@
             <artifactId>jmf</artifactId>
             <version>2.1.1e</version>
         </dependency>
-        
 
         <!-- https://mvnrepository.com/artifact/org.eclipse.persistence/eclipselink -->
         <dependency>
@@ -42,12 +40,11 @@
             <version>2.6.3</version>
         </dependency>
 
-
         <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>4.13.1</version>
         </dependency>
         
         
@@ -63,7 +60,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>jphotodb.Main</mainClass>
+                            <mainClass>photodb.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -77,7 +74,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>jphotodb.Main</mainClass>
+                            <mainClass>photodb.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
