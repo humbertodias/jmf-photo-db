@@ -2,6 +2,10 @@
 
 JMF application that take photos from your webcam and store in database as a BLOB file.
 
+Requirement
+[Java Media Framework](https://www.oracle.com/java/technologies/javase/java-media-framework.html)
+
+
 ```mermaid
 sequenceDiagram
     participant App as Java Application
