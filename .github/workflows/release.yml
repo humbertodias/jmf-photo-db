@@ -39,7 +39,7 @@ jobs:
       - name: Archive Folder
         uses: actions/upload-artifact@v2
         with:
-          name: photo-db.jar
+          name: artifact
           path: ${{github.workspace}}/target/*-with-dependencies.jar
 
   publish-release:
@@ -50,8 +50,13 @@ jobs:
       - name: Download Artifact
         uses: actions/download-artifact@v2
         with:
-          name: photo-db.jar
-          path: ${{github.workspace}}/photo-db.jar
+          name: artifact
+          path: ${{github.workspace}}
+
+      - name: Rename
+        run: |
+          cd ${{github.workspace}}
+          mv *-with-dependencies.jar photo-db.jar
 
       - name: Create Release
         id: create_release
