@@ -5,6 +5,9 @@ JMF application that take photos from your webcam and store in database as a BLO
 Requirement
 [Java Media Framework](https://www.oracle.com/java/technologies/javase/java-media-framework.html)
 
+> [!WARNING]  
+> JMF only works with JDK x86 and the following platforms: windows-i586, linux-i586, solaris-sparc 
+
 
 ```mermaid
 sequenceDiagram
