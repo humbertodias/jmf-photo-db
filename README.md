@@ -1,6 +1,6 @@
 ### JMF Photo DB
 
-JMF application that establishes a connection with your webcam, captures an instant photo, converts it into a blob, and then persists it into a database.
+JMF application that take photos from your webcam and store in database as a BLOB file.
 
 ```mermaid
 sequenceDiagram
