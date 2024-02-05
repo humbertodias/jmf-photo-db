@@ -19,13 +19,14 @@ sequenceDiagram
 
 ```shell
 mvn package
-java -jar target/photo-db-1.0-jar-with-dependencies.jar <cod_inst> <rgm_alun>
+COD_INSTITUICAO=1
+RGM_ALUNO=123456789
+java -jar target/photo-db-1.0-jar-with-dependencies.jar $COD_INSTITUICAO $RGM_ALUNO
 ```
 
 ## Db Configuration
 At [src/main/resources/connection.properties](src/main/resources/connection.properties)
 ```
-table.photo=aluno_foto
 jdbc.driver=org.h2.Driver
 jdbc.user=sa
 jdbc.pass=

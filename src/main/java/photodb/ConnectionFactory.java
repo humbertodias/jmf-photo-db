@@ -20,11 +20,16 @@ public class ConnectionFactory {
     private static String JDBC_PASS;
 
     private static String TABLE_PHOTO;
+    private static String TABLE_PHOTO_SQL_CREATE;
 
     static {
         loadConfiguration("connection");
 
         if (getTables(getConnection()).stream().noneMatch(name -> TABLE_PHOTO.equalsIgnoreCase(name))) createDB();
+    }
+
+    private ConnectionFactory(){
+
     }
 
     /**
@@ -44,7 +49,8 @@ public class ConnectionFactory {
                 JDBC_URL = properties.getProperty("jdbc.url");
                 JDBC_USER = properties.getProperty("jdbc.user");
                 JDBC_PASS = properties.getProperty("jdbc.pass");
-                TABLE_PHOTO = properties.getProperty("table.photo");
+                TABLE_PHOTO_SQL_CREATE = properties.getProperty("table.photo.sql.create");
+                TABLE_PHOTO = TABLE_PHOTO_SQL_CREATE.split(" ")[2];
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -68,16 +74,8 @@ public class ConnectionFactory {
     }
 
     public static void createDB() {
-        String sql = String.format("create table %s\n"
-                + "(type varchar(50)\n"
-                + ",cod_inst int\n"
-                + ",rgm_alun varchar(50)\n"
-                + ",nome_arq varchar(255)\n"
-                + ",foto LONGBLOB\n"
-                + ",size_byte int\n"
-                + ")", TABLE_PHOTO);
         try {
-            try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
+            try (PreparedStatement ps = getConnection().prepareStatement(TABLE_PHOTO_SQL_CREATE)) {
                 ps.execute();
             }
         } catch (SQLException ex) {
