@@ -1,3 +1,4 @@
+import org.junit.BeforeClass;
 import org.junit.Test;
 import photodb.ConnectionFactory;
 import photodb.Picture;
@@ -11,6 +12,11 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 public class DBTest {
+
+    @BeforeClass
+    public static void setup(){
+        System.setProperty("java.awt.headless", "false");
+    }
 
     @Test
     public void testConnection() {
