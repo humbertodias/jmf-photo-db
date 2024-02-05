@@ -25,6 +25,9 @@ jobs:
           distribution: 'temurin'
           architecture: x64
 
+      - name: Deps
+        run: apt install -y xvfb
+
       - name: Build
         run: mvn package
 
