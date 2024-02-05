@@ -18,7 +18,7 @@ sequenceDiagram
 ### Usage
 
 ```shell
-mvn package
+./mvnw package
 COD_INSTITUICAO=1
 RGM_ALUNO=123456789
 java -jar target/photo-db-1.0-jar-with-dependencies.jar $COD_INSTITUICAO $RGM_ALUNO
