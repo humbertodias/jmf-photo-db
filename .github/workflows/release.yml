@@ -26,7 +26,7 @@ jobs:
           architecture: x64
 
       - name: Deps
-        run: apt install -y xvfb
+        run: sudo apt install -y xvfb
 
       - name: Build
         run: mvn package
