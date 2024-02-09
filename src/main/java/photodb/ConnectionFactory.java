@@ -21,6 +21,12 @@ public class ConnectionFactory {
 
     private static String TABLE_PHOTO;
     private static String TABLE_PHOTO_SQL_CREATE;
+    public static String TABLE_PHOTO_SQL_COUNT;
+    public static String TABLE_PHOTO_SQL_SELECT;
+    public static String TABLE_PHOTO_SQL_UPDATE;
+    public static String TABLE_PHOTO_SQL_INSERT;
+
+
 
     static {
         loadConfiguration("connection");
@@ -51,6 +57,10 @@ public class ConnectionFactory {
                 JDBC_PASS = properties.getProperty("jdbc.pass");
                 TABLE_PHOTO_SQL_CREATE = properties.getProperty("table.photo.sql.create");
                 TABLE_PHOTO = TABLE_PHOTO_SQL_CREATE.split(" ")[2];
+                TABLE_PHOTO_SQL_COUNT = properties.getProperty("table.photo.sql.count");
+                TABLE_PHOTO_SQL_SELECT = properties.getProperty("table.photo.sql.select");
+                TABLE_PHOTO_SQL_INSERT = properties.getProperty("table.photo.sql.insert");
+                TABLE_PHOTO_SQL_UPDATE = properties.getProperty("table.photo.sql.update");
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
