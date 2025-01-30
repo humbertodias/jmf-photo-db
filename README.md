@@ -1,3 +1,5 @@
+[![Build, Test, and Publish Release](https://github.com/humbertodias/jmf-photo-db/actions/workflows/release.yml/badge.svg)](https://github.com/humbertodias/jmf-photo-db/actions/workflows/release.yml)
+
 ### JMF Photo DB
 
 JMF application that take photos from your webcam and store in database as a BLOB file.
