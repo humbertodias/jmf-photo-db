@@ -6,7 +6,8 @@ Requirement
 [Java Media Framework](https://www.oracle.com/java/technologies/javase/java-media-framework.html)
 
 > [!WARNING]  
-> JMF only works with JDK x86 and the following platforms: windows-i586, linux-i586, solaris-sparc 
+> JMF only works with JDK x86 and the following platforms: windows-i586, linux-i586, solaris-sparc
+> For other platforms use [java-opencv-photo-db](https://github.com/humbertodias/java-opencv-photo-db)
 
 
 ```mermaid
