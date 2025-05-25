@@ -39,10 +39,10 @@ public class WebCamCapture extends JFrame {
 
     private int cod_inst;
     private String rgm_alun;
-    private String extension = "jpg";//sempre jpg
+    private String extension = "jpg";
     private String dir = System.getProperty("java.io.tmpdir");
     private String defaultFrameSize = "200x200";
-    private Dimension defaultVideoFormatSize = new Dimension(352, 288);//sempre iniciar com esta resolucao, para agilizar
+    private Dimension defaultVideoFormatSize = new Dimension(352, 288);
 
     /**
      * Constructor
@@ -97,7 +97,7 @@ public class WebCamCapture extends JFrame {
     /**
      * Initialise
      *
-     * @returns true if web cam is detected
+     * @returns true if webcam is detected
      */
     public boolean initialise() {
         MyCaptureDeviceInfo[] cams = autoDetect();
@@ -129,7 +129,7 @@ public class WebCamCapture extends JFrame {
      * Initialise
      *
      * @param _deviceInfo, specific web cam device if not autodetected
-     * @return true if web cam is detected
+     * @return true if webcam is detected
      */
     public boolean initialise(CaptureDeviceInfo _deviceInfo) {
         setStatusBar("Initialising...");
@@ -301,7 +301,7 @@ public class WebCamCapture extends JFrame {
         if (list != null) {
             for (CaptureDeviceInfo devInfo : list) {
                 String name = devInfo.getName();
-                // v4l:linux || vfw:windows || anyother (solaris) for example, I'm not sure about there syntax
+                // v4l:linux || vfw:windows || another (solaris) for example, I'm not sure about there syntax
                 if (name.toLowerCase().startsWith("v")) {
                     cams.addElement(new MyCaptureDeviceInfo(devInfo));
                 }
@@ -315,7 +315,7 @@ public class WebCamCapture extends JFrame {
     }//of autoDetect
 
     /**
-     * grabs a frame's buffer from the web cam / device
+     * grabs a frame's buffer from the webcam / device
      *
      * @return A frames buffer
      */
@@ -338,7 +338,7 @@ public class WebCamCapture extends JFrame {
     }//of grabFrameBuffer
 
     /**
-     * grabs a frame's buffer, as an image, from the web cam / device
+     * grabs a frame's buffer, as an image, from the webcam / device
      *
      * @return A frames buffer as an image
      */
@@ -371,7 +371,7 @@ public class WebCamCapture extends JFrame {
      * @return
      */
     public Image getResizedImage(BufferedImage image, Dimension d) {
-        BufferedImage results = new BufferedImage(d.width, d.height, BufferedImage.TYPE_INT_RGB);// mexer aki na color model
+        BufferedImage results = new BufferedImage(d.width, d.height, BufferedImage.TYPE_INT_RGB);
         Graphics2D g2 = results.createGraphics();
         double scaleX = d.width / (double) image.getWidth(null);
         double scaleY = d.height / (double) image.getHeight(null);

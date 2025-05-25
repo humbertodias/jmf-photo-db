@@ -37,7 +37,7 @@ java -jar target/photo-db-1.0-jar-with-dependencies.jar $COD_INSTITUICAO $RGM_AL
 
 ## Db Configuration
 At [src/main/resources/connection.properties](src/main/resources/connection.properties)
-```
+```properties
 jdbc.driver=org.h2.Driver
 jdbc.user=sa
 jdbc.pass=
